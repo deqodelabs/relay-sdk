@@ -152,7 +152,7 @@ export type CallWithSyncFeeConcurrentERC2771Request =
   CallWithConcurrentERC2771Request & BaseCallWithSyncFeeParams;
 
 export type CallWithERC2771RequestOptionalParameters = {
-  userNonce: bigint;
+  userNonce: number;
   userDeadline: number;
 };
 

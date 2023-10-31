@@ -4,7 +4,7 @@ import {
   CallWithConcurrentERC2771RequestOptionalParameters,
   CallWithERC2771Request,
   CallWithERC2771RequestOptionalParameters,
-  ERC2771Type,
+  ERC2771Type
 } from "../lib/erc2771/types";
 import { Config, SignerOrProvider } from "../lib/types";
 
@@ -52,11 +52,11 @@ export async function populateOptionalUserParameters(
 > {
   if (isConcurrentRequest(payload.request)) {
     const { request } = payload;
-    const parametersToOverride: Partial<CallWithConcurrentERC2771RequestOptionalParameters> =
-      {};
+    const parametersToOverride: Partial<CallWithConcurrentERC2771RequestOptionalParameters> = {};
     if (!request.userDeadline) {
-      parametersToOverride.userDeadline =
-        calculateDeadline(DEFAULT_DEADLINE_GAP);
+      parametersToOverride.userDeadline = calculateDeadline(
+        DEFAULT_DEADLINE_GAP
+      );
     }
     if (!request.userSalt) {
       parametersToOverride.userSalt = generateSalt();
@@ -64,11 +64,11 @@ export async function populateOptionalUserParameters(
     return parametersToOverride;
   } else {
     const { type, signerOrProvider, request } = payload;
-    const parametersToOverride: Partial<CallWithERC2771RequestOptionalParameters> =
-      {};
+    const parametersToOverride: Partial<CallWithERC2771RequestOptionalParameters> = {};
     if (!request.userDeadline) {
-      parametersToOverride.userDeadline =
-        calculateDeadline(DEFAULT_DEADLINE_GAP);
+      parametersToOverride.userDeadline = calculateDeadline(
+        DEFAULT_DEADLINE_GAP
+      );
     }
     if (request.userNonce === undefined) {
       if (!signerOrProvider || !signerOrProvider.provider) {
@@ -84,7 +84,7 @@ export async function populateOptionalUserParameters(
         {
           account: request.user as string,
           type,
-          signerOrProvider,
+          signerOrProvider
         },
         config
       );

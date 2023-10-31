@@ -14,7 +14,7 @@ export const getUserNonce = async (
     signerOrProvider: SignerOrProvider;
   },
   config: Config
-): Promise<bigint> => {
+): Promise<number> => {
   const { account, type, signerOrProvider } = payload;
   if (!signerOrProvider.provider) {
     throw new Error(`Missing provider`);
@@ -27,5 +27,5 @@ export const getUserNonce = async (
     USER_NONCE_ABI,
     signerOrProvider
   );
-  return (await contract.userNonce(account)) as bigint;
+  return (await contract.userNonce(account)) as number;
 };
